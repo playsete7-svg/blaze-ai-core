@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sucrase-node src/main/server.ts",
+    "start": "sucrase-node integracao_blaze.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
@@ -33,6 +33,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "sucrase": "^3.35.1",
     "ws": "^8.14.2"
   }
 }
