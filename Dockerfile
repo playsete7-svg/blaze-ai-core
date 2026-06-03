@@ -2,14 +2,15 @@ FROM node:18
 
 WORKDIR /app
 
-# Copia os arquivos de configuração
-COPY package*.json ./
-
-# Instala apenas o essencial, ignorando erros de scripts secundários
-RUN npm install --include=dev --ignore-scripts
-
-# Copia todo o resto do código
+# Copia tudo primeiro para garantir que as pastas src/infra existam
 COPY . .
 
-# Comando para rodar sua IA
+# Instala as dependências ignorando scripts que podem travar
+RUN npm install --ignore-scripts
+
+# Instala o sucrase localmente
+RUN npm install sucrase
+
+# Comando para rodar
 CMD ["npx", "sucrase-node", "integracao_blaze.ts"]
+
